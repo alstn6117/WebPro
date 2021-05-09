@@ -13,7 +13,7 @@ import java.io.IOException;
 public class DispatcherServlet extends HttpServlet {
 
     @Autowired
-    UserController userController;
+    Controller controller;
 
     @Override
     protected void service(HttpServletRequest request,
@@ -22,12 +22,20 @@ public class DispatcherServlet extends HttpServlet {
         String uri = request.getRequestURI();
 
         switch (uri) {
-            case "/mvc/user/userList" -> userController.userList(request, response);
-            case "/mvc/user/userForm" -> userController.userForm(request, response);
-            case "/mvc/user/loginForm" -> userController.loginForm(request, response);
-            case "/mvc/user/userInfo" -> userController.userInfo(request, response);
-            case "/mvc/user/addUser" -> userController.addUser(request, response);
-            case "/mvc/user/login" -> userController.login(request, response);
+            case "/mvc/article/userList" -> controller.userList(request, response);
+            case "/mvc/article/userForm" -> controller.userForm(request, response);
+            case "/mvc/article/userInfo" -> controller.userInfo(request, response);
+            case "/mvc/article/addUser" -> controller.addUser(request, response);
+            case "/mvc/article/login" -> controller.login(request, response);
+            case "/mvc/article/articleList" -> controller.articleList(request, response);
+            case "/mvc/article/articleForm" -> controller.articleForm(request, response);
+            case "/mvc/article/addArticle" -> controller.addArticle(request, response);
+            case "/mvc/article/updateArticle" -> controller.updateArticle(request, response);
+            case "/mvc/article/getArticle" -> controller.getArticle(request, response);
+            case "/mvc/article/loginForm" -> controller.loginForm(request, response);
+            case "/mvc/article/deleteArticle" -> controller.deleteArticle(request, response);
+            case "/mvc/article/updateForm" -> controller.updateForm(request, response);
+            case "/mvc/article/deleteForm" -> controller.deleteForm(request, response);
             default -> response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
     }
